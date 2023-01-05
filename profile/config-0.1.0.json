@@ -1,0 +1,26 @@
+{
+  "version": "0.1.0",
+  "commands": [
+    {
+      "name": "adbd",
+      "exec-cmd": "su",
+      "cmd": "setprop service.adb.tcp.port 5555 && stop adbd && start adbd",
+      "exec-stop": "",
+      "stop": ""
+    },
+    {
+      "name": "frp",
+      "exec-cmd": "su",
+      "cmd": "/data/local/tmp/weclont/frpc -c /data/local/tmp/weclont/frpc.ini",
+      "exec-stop": "su",
+      "stop": "ps -ef | grep frpc | grep -v grep | awk '{print $2}' | xargs kill"
+    },
+    {
+      "name": "clash",
+      "exec-cmd": "su",
+      "cmd": "/data/local/tmp/clash/clash -d /data/local/tmp/clash",
+      "exec-stop": "su",
+      "stop": "ps -ef | grep clash | grep -v grep | awk '{print $2}' | xargs kill"
+    }
+  ]
+}
